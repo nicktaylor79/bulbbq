@@ -13,7 +13,7 @@ def pubsub_to_bigq(event, context):
 
    insert_rows = {}
    for variable in ["date","key","value"]:
-      insert_rows[variable] = pubsub.attribs(variable)
+      insert_rows[variable] = pubsub_attribs.get(variable)
 
    print(insert_rows)
    to_bigquery(os.environ['dataset'], os.environ['table'], insert_rows)
